@@ -11,7 +11,7 @@ const PRESS = {
 }[process.platform];
 
 const HINT = {
-  darwin: 'Grant Accessibility to Stay Active: System Settings → Privacy & Security → Accessibility',
+  darwin: 'Grant Accessibility to StayGreen: System Settings → Privacy & Security → Accessibility',
   win32: 'PowerShell failed to send a key',
   linux: 'Install xdotool (sudo apt install xdotool); Wayland is not supported',
 }[process.platform];
@@ -61,7 +61,7 @@ const show = () => (win.show(), win.focus());
 
 function updateTray() {
   if (!tray) return;
-  tray.setToolTip(on ? `Stay Active: on (${count} keypresses)` : 'Stay Active: off');
+  tray.setToolTip(on ? `StayGreen: on (${count} keypresses)` : 'StayGreen: off');
   tray.setContextMenu(Menu.buildFromTemplate([
     { label: 'Show window', click: show },
     { label: on ? 'Stop' : 'Start', click: () => (on ? stop() : start(range)) },
@@ -77,9 +77,9 @@ app.on('second-instance', () => win && show());
 app.whenReady().then(() => {
   // Chromium can't paint into a desktop session it doesn't own: as root the window comes up empty.
   if (process.platform === 'linux' && process.getuid() === 0) {
-    const msg = 'Don\'t run Stay Active as root. Start it as your normal desktop user (no sudo).';
+    const msg = 'Don\'t run StayGreen as root. Start it as your normal desktop user (no sudo).';
     console.error(msg);
-    dialog.showErrorBox('Stay Active', msg);
+    dialog.showErrorBox('StayGreen', msg);
     return app.exit(1);
   }
   const icon = nativeImage.createFromPath(path.join(__dirname, 'icon.png'));
@@ -89,7 +89,7 @@ app.whenReady().then(() => {
 
   win = new BrowserWindow({
     width: 340, height: 340, useContentSize: true, resizable: false, autoHideMenuBar: true,
-    title: 'Stay Active', backgroundColor: '#0f172a', icon,
+    title: 'StayGreen', backgroundColor: '#0f172a', icon,
     webPreferences: { preload: path.join(__dirname, 'preload.js') },
   });
   win.loadFile('index.html');

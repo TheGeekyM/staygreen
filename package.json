@@ -1,18 +1,18 @@
 {
-  "name": "stay-active-gui",
+  "name": "staygreen",
   "version": "1.0.4",
-  "description": "Tiny tray app that keeps Teams, Slack & co. showing you as Active",
+  "description": "Keep your Teams status green: a tiny tray app that stops Teams, Slack & co. from marking you Away",
   "main": "main.js",
   "author": "TheGeekyM",
   "license": "MIT",
-  "repository": "github:TheGeekyM/stay-active-gui",
+  "repository": "github:TheGeekyM/staygreen",
   "scripts": {
     "start": "electron .",
     "dist": "electron-builder"
   },
   "build": {
-    "appId": "com.thegeekym.stayactive",
-    "productName": "Stay Active",
+    "appId": "com.thegeekym.staygreen",
+    "productName": "StayGreen",
     "files": [
       "main.js",
       "preload.js",

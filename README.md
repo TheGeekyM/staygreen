@@ -1,29 +1,30 @@
 <p align="center">
-  <img src="icon.png" width="128" alt="Stay Active icon">
+  <img src="icon.png" width="128" alt="StayGreen icon">
 </p>
 
-<h1 align="center">Stay Active</h1>
+<h1 align="center">StayGreen</h1>
 
 <p align="center">
-  <strong>A tiny tray app that keeps Microsoft Teams, Slack & co. from marking you "Away".</strong><br>
+  <strong>Keep your Teams status green.</strong><br>
+  A tiny tray app that stops Microsoft Teams, Slack & co. from marking you "Away".<br>
   macOS · Windows · Linux
 </p>
 
 <p align="center">
-  <a href="https://github.com/TheGeekyM/stay-active-gui/releases/latest"><img src="https://img.shields.io/github/v/release/TheGeekyM/stay-active-gui?style=flat-square" alt="Latest release"></a>
-  <a href="https://github.com/TheGeekyM/stay-active-gui/releases"><img src="https://img.shields.io/github/downloads/TheGeekyM/stay-active-gui/total?style=flat-square" alt="Downloads"></a>
-  <a href="LICENSE"><img src="https://img.shields.io/github/license/TheGeekyM/stay-active-gui?style=flat-square" alt="MIT license"></a>
+  <a href="https://github.com/TheGeekyM/staygreen/releases/latest"><img src="https://img.shields.io/github/v/release/TheGeekyM/staygreen?style=flat-square" alt="Latest release"></a>
+  <a href="https://github.com/TheGeekyM/staygreen/releases"><img src="https://img.shields.io/github/downloads/TheGeekyM/staygreen/total?style=flat-square" alt="Downloads"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/github/license/TheGeekyM/staygreen?style=flat-square" alt="MIT license"></a>
 </p>
 
 <p align="center">
-  <img src="assets/stopped.png" width="300" alt="Stay Active stopped">
+  <img src="assets/stopped.png" width="300" alt="StayGreen stopped">
   &nbsp;&nbsp;
-  <img src="assets/running.png" width="300" alt="Stay Active running">
+  <img src="assets/running.png" width="300" alt="StayGreen running">
 </p>
 
 ## Why
 
-Teams marks you **Away** after about 5 minutes without keyboard or mouse input. That includes the times you're reading a long doc, in a meeting room, or getting coffee. Stay Active keeps the idle timer from ever reaching that point.
+Teams marks you **Away** after about 5 minutes without keyboard or mouse input. That includes the times you're reading a long doc, in a meeting room, or getting coffee. StayGreen keeps the idle timer from ever reaching that point.
 
 ## Features
 
@@ -46,17 +47,17 @@ Inspired by [sleekhost/stay-active](https://github.com/sleekhost/stay-active), a
 
 ## Download
 
-Get the latest build from [Releases](https://github.com/TheGeekyM/stay-active-gui/releases/latest):
+Get the latest build from [Releases](https://github.com/TheGeekyM/staygreen/releases/latest):
 
 | OS | File |
 |----|------|
-| macOS (Apple Silicon) | `Stay-Active-x.y.z-arm64.dmg` |
-| Windows | `Stay-Active-Setup-x.y.z.exe` (installer) or `Stay-Active-x.y.z.exe` (portable) |
-| Linux | `Stay-Active-x.y.z.AppImage` |
+| macOS (Apple Silicon) | `StayGreen-x.y.z-arm64.dmg` |
+| Windows | `StayGreen-Setup-x.y.z.exe` (installer) or `StayGreen-x.y.z.exe` (portable) |
+| Linux | `StayGreen-x.y.z.AppImage` |
 
 ### First-run notes
 
-- **macOS:** the app is unsigned. If macOS says it is "damaged", run `xattr -cr "/Applications/Stay Active.app"`. Then allow it under **System Settings → Privacy & Security → Accessibility**, or it can't press keys. The app shows an error if permission is missing.
+- **macOS:** the app is unsigned. If macOS says it is "damaged", run `xattr -cr "/Applications/StayGreen.app"`. Then allow it under **System Settings → Privacy & Security → Accessibility**, or it can't press keys. The app shows an error if permission is missing.
 - **Windows:** SmartScreen may warn on first launch. Click **More info → Run anyway**.
 - **Linux:** needs `xdotool` (`sudo apt install xdotool`) and an X11 session. Wayland is not supported. Run `chmod +x *.AppImage` first. Run it as your normal user, not root or sudo: as root the window comes up empty, so the app now refuses and says why.
 
@@ -66,15 +67,15 @@ AppImages don't add themselves to the app menu. To get the icon in your launcher
 
 ```bash
 mkdir -p ~/.local/share/icons ~/.local/share/applications
-curl -fsSL https://raw.githubusercontent.com/TheGeekyM/stay-active-gui/main/icon.png -o ~/.local/share/icons/stay-active.png
-cat > ~/.local/share/applications/stay-active.desktop <<EOF
+curl -fsSL https://raw.githubusercontent.com/TheGeekyM/staygreen/main/icon.png -o ~/.local/share/icons/staygreen.png
+cat > ~/.local/share/applications/staygreen.desktop <<EOF
 [Desktop Entry]
-Name=Stay Active
-Exec=$HOME/Applications/Stay-Active.AppImage
-Icon=$HOME/.local/share/icons/stay-active.png
+Name=StayGreen
+Exec=$HOME/Applications/StayGreen.AppImage
+Icon=$HOME/.local/share/icons/staygreen.png
 Type=Application
 Categories=Utility;
-StartupWMClass=stay-active-gui
+StartupWMClass=staygreen
 EOF
 ```
 
