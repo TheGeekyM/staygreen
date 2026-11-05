@@ -1,0 +1,53 @@
+{
+  "name": "stay-active-gui",
+  "version": "1.0.0",
+  "description": "Tiny tray app that keeps Teams, Slack & co. showing you as Active",
+  "main": "main.js",
+  "author": "TheGeekyM",
+  "license": "MIT",
+  "repository": "github:TheGeekyM/stay-active-gui",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder"
+  },
+  "build": {
+    "appId": "com.thegeekym.stayactive",
+    "productName": "Stay Active",
+    "files": [
+      "main.js",
+      "preload.js",
+      "index.html",
+      "icon.png"
+    ],
+    "mac": {
+      "target": [
+        "dmg",
+        "zip"
+      ],
+      "icon": "icon.png",
+      "category": "public.app-category.productivity"
+    },
+    "win": {
+      "target": [
+        "nsis",
+        "portable"
+      ],
+      "icon": "icon.png"
+    },
+    "linux": {
+      "target": [
+        "AppImage"
+      ],
+      "icon": "icon.png",
+      "category": "Utility"
+    },
+    "publish": {
+      "provider": "github",
+      "releaseType": "release"
+    }
+  },
+  "devDependencies": {
+    "electron": "^45.2.3",
+    "electron-builder": "^26.18.0"
+  }
+}

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'unsafe-inline'; script-src 'unsafe-inline'">
+<title>Stay Active</title>
+<style>
+  body { margin: 0; padding: 24px; font: 14px system-ui, sans-serif; background: #0f172a; color: #e2e8f0; text-align: center; user-select: none; }
+  h1 { font-size: 18px; margin: 0 0 20px; }
+  #toggle { width: 120px; height: 120px; border-radius: 50%; border: 0; font: 600 16px system-ui; cursor: pointer; background: #334155; color: #e2e8f0; transition: background .2s; }
+  #toggle.on { background: #22c55e; color: #052e16; box-shadow: 0 0 30px #22c55e66; }
+  #toggle:focus-visible { outline: 3px solid #93c5fd; outline-offset: 3px; }
+  .row { margin-top: 18px; display: flex; gap: 8px; justify-content: center; align-items: center; }
+  input { width: 56px; padding: 4px; border-radius: 6px; border: 1px solid #475569; background: #1e293b; color: inherit; text-align: center; }
+  input:disabled { opacity: .5; }
+  #status { margin-top: 18px; color: #94a3b8; line-height: 1.6; min-height: 3.2em; }
+  #status.err { color: #f87171; }
+</style>
+</head>
+<body>
+  <h1>Stay Active</h1>
+  <button id="toggle" aria-pressed="false">Start</button>
+  <div class="row">
+    <label>Every <input id="min" type="number" min="5" max="3600" value="30"></label>
+    <label>– <input id="max" type="number" min="5" max="3600" value="60"> sec</label>
+  </div>
+  <div id="status" role="status">Stopped</div>
+  <div id="idle" style="color:#64748b;font-size:12px"></div>
+<script>
+  const $ = (id) => document.getElementById(id);
+  let running = false;
+
+  function render(s) {
+    running = s.running;
+    $('toggle').textContent = running ? 'Stop' : 'Start';
+    $('toggle').classList.toggle('on', running);
+    $('toggle').setAttribute('aria-pressed', running);
+    $('min').disabled = $('max').disabled = running;
+    $('status').classList.toggle('err', !!s.error);
+    $('status').textContent = s.error || (running
+      ? `Active · ${s.count} keypresses\nLast ${new Date(s.last).toLocaleTimeString()} · next in ${s.next}s`
+      : `Stopped · ${s.count || 0} keypresses`);
+  }
+  $('status').style.whiteSpace = 'pre-line';
+
+  $('toggle').onclick = () => running
+    ? api.stop()
+    : api.start({ min: $('min').value, max: $('max').value });
+  api.onStatus(render);
+  setInterval(async () => $('idle').textContent = `System idle: ${await api.idle()}s`, 1000);
+</script>
+</body>
+</html>
