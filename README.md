@@ -14,9 +14,9 @@ Get the latest build from [Releases](https://github.com/TheGeekyM/stay-active-gu
 
 | OS | File |
 |----|------|
-| macOS | `Stay Active-x.y.z-arm64.dmg` (Apple Silicon) / `Stay Active-x.y.z.dmg` (Intel) |
-| Windows | `Stay Active Setup x.y.z.exe` (installer) or `Stay Active x.y.z.exe` (portable) |
-| Linux | `Stay Active-x.y.z.AppImage` |
+| macOS (Apple Silicon) | `Stay-Active-x.y.z-arm64.dmg` |
+| Windows | `Stay-Active-Setup-x.y.z.exe` (installer) or `Stay-Active-x.y.z.exe` (portable) |
+| Linux | `Stay-Active-x.y.z.AppImage` |
 
 ### First-run notes
 
