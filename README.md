@@ -10,6 +10,12 @@ The window also shows a small **Team · demo** list. Those names are sample data
 
 Inspired by [sleekhost/stay-active](https://github.com/sleekhost/stay-active), a macOS shell script, rebuilt as a small Electron GUI for macOS, Windows and Linux.
 
+## Which Teams does it work with?
+
+- **Linux:** works with [teams-for-linux](https://github.com/IsmaelMartinez/teams-for-linux) in the background. That app reports "active" to Teams every 10 s whenever the OS isn't idle.
+- **Teams in a browser tab or as a Chrome/Edge web app (PWA): only while that window is focused.** A web page only sees input sent to its own window, so if you're working in another window, Teams goes Away.
+- **Teams desktop app on Windows/macOS:** should work in the background, because it's expected to read OS-wide idle time. Not tested.
+
 ## Download
 
 Get the latest build from [Releases](https://github.com/TheGeekyM/stay-active-gui/releases/latest):
