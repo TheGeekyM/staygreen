@@ -1,4 +1,4 @@
-const { app, BrowserWindow, Menu, Tray, ipcMain, nativeImage, powerMonitor, powerSaveBlocker } = require('electron');
+const { app, BrowserWindow, Menu, dialog, Tray, ipcMain, nativeImage, powerMonitor, powerSaveBlocker } = require('electron');
 const { execFile } = require('child_process');
 const path = require('path');
 
@@ -75,6 +75,13 @@ if (!app.requestSingleInstanceLock()) app.quit();
 app.on('second-instance', () => win && show());
 
 app.whenReady().then(() => {
+  // Chromium can't paint into a desktop session it doesn't own: as root the window comes up empty.
+  if (process.platform === 'linux' && process.getuid() === 0) {
+    const msg = 'Don\'t run Stay Active as root. Start it as your normal desktop user (no sudo).';
+    console.error(msg);
+    dialog.showErrorBox('Stay Active', msg);
+    return app.exit(1);
+  }
   const icon = nativeImage.createFromPath(path.join(__dirname, 'icon.png'));
   tray = new Tray(icon.resize({ width: 18, height: 18 }));
   tray.on('click', show);

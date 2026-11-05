@@ -24,7 +24,7 @@ Get the latest build from [Releases](https://github.com/TheGeekyM/stay-active-gu
 
 - **macOS:** the app is unsigned. If macOS says it is "damaged", run `xattr -cr "/Applications/Stay Active.app"`. Then allow it under **System Settings → Privacy & Security → Accessibility**, or it can't press keys. The app shows an error if permission is missing.
 - **Windows:** SmartScreen may warn on first launch. Click **More info → Run anyway**.
-- **Linux:** needs `xdotool` (`sudo apt install xdotool`) and an X11 session. Wayland is not supported. Run `chmod +x *.AppImage` first.
+- **Linux:** needs `xdotool` (`sudo apt install xdotool`) and an X11 session. Wayland is not supported. Run `chmod +x *.AppImage` first. Run it as your normal user, not root or sudo: as root the window comes up empty, so the app now refuses and says why.
 
 ## Run from source
 
