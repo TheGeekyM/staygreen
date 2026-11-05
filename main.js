@@ -81,7 +81,7 @@ app.whenReady().then(() => {
   updateTray();
 
   win = new BrowserWindow({
-    width: 340, height: 340, resizable: false, autoHideMenuBar: true,
+    width: 340, height: 560, useContentSize: true, resizable: false, autoHideMenuBar: true,
     title: 'Stay Active', backgroundColor: '#0f172a', icon,
     webPreferences: { preload: path.join(__dirname, 'preload.js') },
   });

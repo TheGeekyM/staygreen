@@ -6,6 +6,8 @@ Every 30–60 seconds (random, configurable) it presses one harmless key: Shift 
 
 Closing the window keeps it running in the system tray. Quit from the tray menu.
 
+The window also shows a small **Team · demo** list. Those names are sample data for looks only, not real people or real presence status. Only the "You" row reflects the app's state.
+
 Inspired by [sleekhost/stay-active](https://github.com/sleekhost/stay-active), a macOS shell script, rebuilt as a small Electron GUI for macOS, Windows and Linux.
 
 ## Download
