@@ -1,6 +1,6 @@
 {
   "name": "stay-active-gui",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Tiny tray app that keeps Teams, Slack & co. showing you as Active",
   "main": "main.js",
   "author": "TheGeekyM",
