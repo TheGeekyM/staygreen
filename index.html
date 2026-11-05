@@ -15,13 +15,6 @@
   input:disabled { opacity: .5; }
   #status { margin-top: 18px; color: #94a3b8; line-height: 1.6; min-height: 3.2em; }
   #status.err { color: #f87171; }
-  #team { margin: 18px auto 0; max-width: 240px; text-align: left; border-top: 1px solid #1e293b; padding-top: 12px; }
-  #team h2 { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; color: #64748b; margin: 0 0 8px; }
-  #team li { list-style: none; display: flex; align-items: center; gap: 8px; padding: 3px 0; }
-  #team ul { margin: 0; padding: 0; }
-  .dot { width: 9px; height: 9px; border-radius: 50%; background: #22c55e; }
-  .dot.away { background: #eab308; } .dot.busy { background: #ef4444; }
-  .st { margin-left: auto; color: #64748b; font-size: 12px; }
 </style>
 </head>
 <body>
@@ -33,10 +26,6 @@
   </div>
   <div id="status" role="status">Stopped</div>
   <div id="idle" style="color:#64748b;font-size:12px"></div>
-  <section id="team" aria-label="Team (demo data)">
-    <h2>Team · demo</h2>
-    <ul id="members"></ul>
-  </section>
 <script>
   const $ = (id) => document.getElementById(id);
   let running = false;
@@ -51,18 +40,8 @@
     $('status').textContent = s.error || (running
       ? `Active · ${s.count} keypresses\nLast ${new Date(s.last).toLocaleTimeString()} · next in ${s.next}s`
       : `Stopped · ${s.count || 0} keypresses`);
-    renderTeam();
   }
   $('status').style.whiteSpace = 'pre-line';
-
-  // ponytail: sample colleagues for looks only, not real users or real presence data.
-  const team = [['Mohamed E.', 'active'], ['Reem A.', 'away'], ['Ahmed S.', 'active'], ['Nour H.', 'busy'], ['Youssef K.', 'active']];
-  function renderTeam() {
-    const rows = [['You', running ? 'active' : 'away'], ...team];
-    $('members').innerHTML = rows.map(([n, st]) =>
-      `<li><span class="dot ${st}"></span>${n}<span class="st">${st[0].toUpperCase() + st.slice(1)}</span></li>`).join('');
-  }
-  renderTeam();
 
   $('toggle').onclick = () => running
     ? api.stop()
